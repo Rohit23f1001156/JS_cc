@@ -21,8 +21,78 @@ inner text will only show what is visible
 text content will show whole content, even though it is not visible due to css
 innerhtml : gives even the attributes inside the tag
 
-document.querySelector ('h2')
+document.querySelector ('h2')       -> gives only 1 value
 gives the first h2 tag
  
+*******
+when we use -> const qsa = document.querySelectorAll('li')
+this returns a "NodeList" -> looks like an arraay but it is not array
+like we cannot use the map -> foreach can be used
 
+
+so even if there is only a single element after doing qsa, we cannot access it like:
+qsa.style.color = 'orange'
+we have to do it like:
+qsa[0].style.color = "red"
+
+
+*********
+HTMLcollection type:
+when using document.getElementsByClassName('list-item')
+it returns a HTMLCollection with all the items in class list-item
+we cannot use loops on this
+
+###SO WE NEED TO CONVERT IT TO ARRAY:
+Array.from(qsa)
+now we can use everything of array
+
+------------------------------ WATCH LEC 33 FOR REVISION ------------------------- PARENT NODES, CHILD NODES, RELATION ETC.
+it is prefered to use setAttribute rather than using .innerText or .style when defining an element inside script tag
+as it is more optimized and saves one round trip. How?
+setAttribute overwrites the content straight away,
+whereas when using let's say div.innerText = "R8"
+what this does is, it fetches the reference of already available content inside the innerText
+it then overwrites it and sends back the new content
+
+------- we do:
+const addText = document.createTextNode ("R8")
+div.appendChld(addText)
+************
+finally to show it in the website:
+till now everything we added inside script tag was not being shown inside the browser tab
+so we do: document.body.appendChild(div)
+
+************    adding      ************
+<script>
+    function addLang(lang){
+        const li = document.createElement('li');
+        li.innerHTML = `{$lang}`                            ----: this is less optimized. Why?
+        document.querySelector('.language').appendChild(li)
+        
+    }
+    addLang('python')
+    
+    Why: because we have traverse the tree again and again when appending,and since we are appending we are going
+    till the last node, so lot of time
+
+    
+    function addoptilang (lang){            -----more optimized
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(lang))              ---- because of this line
+        document.querySelector('.language').appendChild(li)
+        
+    }
+</script>
+
+*********** editing ***********
+
+const second = document.queryselector("li:nth-child(2)")
+either: secondlang.innerHTML = "JS"
+or:
+const new = document.createElement("li")
+new.textContent = "JS"
+second.replacewith(new)
+
+************ remove ************
+just do second.remove()
 -->
