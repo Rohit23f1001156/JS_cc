@@ -1,0 +1,28 @@
+<!-- 
+DOM - DOCUMENT OBJECT MODEL
+
+in web browser:
+
+window -> document -> html
+html two parts : head, body
+head : title -> text node, meta -> attribute
+
+document.getElementBYId("whatever-you-want-to-find").innerHTML = "<h1>R8</h1>"  
+so using this you can edit the web page
+to know the class of the element we use : "className" not class -> returns undefined
+setAttribute always overwrites
+so lets say we use:
+document.getElementBYId("whatever-you-want-to-find").setAttribute('class', 'test')
+if previously it was "heading" now it becomes "test"
+but we did not want to delete heading from there, so what we should do is write it as:
+setAttribute('class', 'test heading')
+
+inner text will only show what is visible
+text content will show whole content, even though it is not visible due to css
+innerhtml : gives even the attributes inside the tag
+
+document.querySelector ('h2')
+gives the first h2 tag
+ 
+
+-->
