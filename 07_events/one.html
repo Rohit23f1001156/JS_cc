@@ -1,0 +1,36 @@
+<!-- 
+JS is a synchronously run language, but there are some exceptions
+
+event listners are better than onclick as they give also the ability of propogation
+
+onclick usage:
+document.getelementbyId('owl').onclick = function(){
+    alert("owl clicked")            -- not prefered in modern times
+
+}
+
+other methods: 
+attachEvent()
+jQuery - on
+
+** right now best -> addEventListner:
+
+document.getElementById ('owl').addEventListener("click", function(e){cl(e)}, false) 
+--- the third parameter is false as default,
+------these are the things that I need to learn
+---- type, timestamp, preventDefault, target, toElement, srcelement, currentTarget
+--clientX,clientY,screenX,screenY
+--altkey, ctrkey, shiftkey, keycode
+ 
+now propogation got two parts: event bubbling, event capturing
+in bubbling -> goes from inside to outside -> happens as default (since false is default)
+capturing -> out to in -> happens when set to true
+
+now if we want to stop propagation, that is when we click on owl, we dont need the clicked ul part
+so we do -> e.stopPropagation()
+
+
+
+
+
+-->
